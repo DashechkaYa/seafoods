@@ -1,0 +1,286 @@
+@import url(../font/stylesheet.css);
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  /* font-family: "Melodrama", sans-serif; */
+}
+
+html {
+  font-size: 10px;
+}
+
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+  max-width: 1126px;
+  margin: 0 auto;
+}
+
+.header {
+  padding-top: 28px;
+  padding-bottom: 29px;
+  background-color: #f6f4f0;
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.navbar {
+  width: 100%;
+}
+
+.header__navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__block {
+  display: flex;
+  align-items: center;
+  gap: 4.8rem;
+}
+
+.navbar__link {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.24px;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #282828;
+}
+
+.navbar__link--counting::after {
+  content: "0";
+  color: #e7e4e4;
+  font-weight: 700;
+  font-size: 1.2rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 4px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #282828;
+}
+
+.logo {
+  display: block;
+  width: 128px;
+  height: 64px;
+  flex-shrink: 0;
+  position: absolute;
+  top: 25px;
+  z-index: 3;
+}
+
+.logo__item {
+  width: inherit;
+  height: inherit;
+}
+
+.hero {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.hero__inner--first {
+  background: url(../img/BG.png);
+}
+
+.hero__inner--second {
+  background: url(../img/BG-1.png);
+}
+
+.hero__inner--third {
+  background: url(../img/BG-2.png);
+}
+
+.hero__inner--forth {
+  background: url(../img/BG-3.png);
+}
+
+.hero__inner {
+  padding-top: 16.1rem;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+/* .hero__slider-bg {
+  padding-top: 16.1rem;
+  position: absolute;
+  z-index: -1;
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: 50% 50%;
+} */
+
+.hero__title {
+  color: #282828;
+  font-family: "Melodrama", sans-serif;
+  font-size: 4.8rem;
+  font-weight: 700;
+  line-height: 57.6px;
+  letter-spacing: 0.96px;
+  max-width: 38.5rem;
+  margin-bottom: 1.6rem;
+}
+
+.hero__text {
+  font-size: 1.4rem;
+  font-weight: 400;
+  line-height: 22.4px;
+  letter-spacing: 0.28px;
+  max-width: 35.2rem;
+  margin-bottom: 4.8rem;
+}
+
+.hero__button {
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  padding-left: 4.8rem;
+  padding-right: 4.8rem;
+  border: 1px solid #3f3f3f00;
+  color: #f6f4f0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.22px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.hero__button--brown {
+  background-color: #3f3f3f;
+}
+
+.hero__button--beige {
+  background-color: #ddc1a0;
+}
+
+.hero__button--pink {
+  background-color: #e0ab90;
+}
+
+.hero__button--dark-pink {
+  background-color: #ae5e5e;
+}
+
+.hero__img {
+  position: absolute;
+  right: 18%;
+  top: 7%;
+  /* object-position: center center; */
+  max-width: 60%;
+  max-height: 85%;
+  object-fit: contain;
+}
+
+.hero__slider-pagination {
+  position: absolute;
+  top: 8%;
+  right: 13.5%;
+  z-index: 20;
+  cursor: pointer;
+  /* width: 17px;
+  height: 92px; */
+}
+
+.hero__slider-arrows {
+  display: inline-flex;
+  gap: 0.8rem;
+  position: absolute;
+  right: 12%;
+  bottom: 10%;
+}
+
+.hero__slider-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.hero__slider-arrow--brown {
+  background-color: #504f4e;
+  border: 1px solid #504f4e00;
+}
+
+.hero__slider-arrow--beige {
+  background-color: #c1aa90;
+  border: 1px solid #c1aa9000;
+}
+
+.hero__slider-arrow--pink {
+  background-color: #bb917b;
+  border: 1px solid #bb917b00;
+}
+
+.hero__slider-arrow--dark-pink {
+  background-color: #935353;
+  border: 1px solid #93535300;
+}
+
+.hero__product-info-block {
+  padding-top: 12.1rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.hero__product-info-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.hero__product-info-title {
+  color: #282828;
+  font-family: "Melodrama", sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 0.32px;
+  text-transform: uppercase;
+}
+
+.hero__product-info-text {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.22px;
+  text-transform: uppercase;
+}
+
+.hero__product-info-text--beige {
+  color: #ddc1a0;
+}
+
+.hero__product-info-text--pink {
+  color: #e0ab90;
+}
+
+.hero__product-info-text--dark-pink {
+  color: #ae5e5e;
+}
+
+.hero__product-info-icon {
+  padding-left: 4px;
+  padding-right: 4px;
+}

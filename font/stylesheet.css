@@ -1,0 +1,25 @@
+@font-face {
+  font-family: "Melodrama";
+  src: url("Melodrama-Bold.eot");
+  src: local("Melodrama Bold"), local("Melodrama-Bold"),
+    url("Melodrama-Bold.eot?#iefix") format("embedded-opentype"),
+    url("Melodrama-Bold.woff2") format("woff2"),
+    url("Melodrama-Bold.woff") format("woff"),
+    url("Melodrama-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Melodrama";
+  src: url("Melodrama-Semibold.eot");
+  src: local("Melodrama Semibold"), local("Melodrama-Semibold"),
+    url("Melodrama-Semibold.eot?#iefix") format("embedded-opentype"),
+    url("Melodrama-Semibold.woff2") format("woff2"),
+    url("Melodrama-Semibold.woff") format("woff"),
+    url("Melodrama-Semibold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
