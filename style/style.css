@@ -69,27 +69,12 @@ html {
 }
 
 .navbar__link-amount {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  display: inline-block;
   color: #ffffff;
-  position: relative;
-  z-index: 4;
-  margin-left: 10px;
-}
-.navbar__link-amount::after {
-  content: ".";
-  color: #282828;
-  font-weight: 700;
-  font-size: 1.2rem;
-
-  margin-left: -16px;
-  width: 20px;
-  height: 20px;
+  margin-left: 4px;
+  padding: 4px 6px;
   border-radius: 50%;
   background-color: #282828;
-  position: relative;
-  z-index: -1;
 }
 
 .logo {
@@ -110,7 +95,7 @@ html {
 .hero {
   max-width: 100vw;
   width: 100%;
-  height: 100vh;
+  height: calc(100vh - 72px);
   overflow: hidden;
 }
 
