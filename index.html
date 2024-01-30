@@ -40,18 +40,28 @@
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container">
-        <h2 class="hero__title"></h2>
-        <p class="hero__text"></p>
-        <button class="hero__button hero__button--brown" type="button"></button>
-        <img class="hero__img" src="img/image-1.png" alt="product-image">
-        <!-- <div class="hero__slider-arrows">
-          <button class="hero__slider-arrow hero__slider-arrow--brown hero__slider-arrow-prev"><img
-              src="img/Expandleft.svg" alt="arrow-previous"></button>
-          <button class="hero__slider-arrow hero__slider-arrow--brown hero__slider-arrow-next"><img
-              src="img/ExpandRight.svg" alt="arrow-next"></button>
-        </div> -->
+    <section class="hero" id="hero" data-active="">
+      <div class="hero__content">
+        <div class="hero__text-box">
+          <h2 id="hero-title" class="hero__title"></h2>
+          <p id="hero-text" class="hero__text"></p>
+        </div>
+        <button id="hero-button" class="hero__button" type="button"></button>
+      </div>
+      <div id="hero-color" class="hero__color">
+        <div class="grid">
+          <div class="grid__horizontal"></div>
+          <div class="grid__vertical"></div>
+        </div>
+      </div>
+      <img class="hero__img" src="img/image-1.png" alt="product-image">
+      <img class="hero__img" src="img/image-2.png" alt="product-image">
+      <img class="hero__img" src="img/image-3.png" alt="product-image">
+      <img class="hero__img" src="img/image-4.png" alt="product-image">
+      <div id="hero-pagination" class="hero__pagination"></div>
+      <div class="hero__slider-arrows">
+        <button id="hero-prev" class="hero__slider-arrow"><img src="img/Expandleft.svg" alt="arrow-previous"></button>
+        <button id="hero-next" class="hero__slider-arrow"><img src="img/ExpandRight.svg" alt="arrow-next"></button>
       </div>
     </section>
 
@@ -142,7 +152,7 @@
   </main>
 
 
-  <script src="script/main.js"></script>
+  <script type="module" src="script/main.js"></script>
   <!-- <script src="script/slider.js"></script> -->
 </body>
 
