@@ -68,10 +68,12 @@ const $heroColor = document.getElementById('hero-color');
 const $heroPagination = document.getElementById('hero-pagination');
 const $heroPrev = document.getElementById('hero-prev');
 const $heroNext = document.getElementById('hero-next');
+const $heroImgs = document.getElementById('hero-imgs');
 
 // в функції спочатку деструктуризуємо по ключам елемент масиву (обєкт); 
 // далі записуємо в дата атрибут hero в html ІД обєкту з масиву (щоб фіксувати який слайд на сторінці зараз - потрібно для кнопок вперед/назад);
 // також записуємо в змінні данні з обєкту цього масиву - це стає один слайд слайдеру
+// передаємо деструктуровані параметри з об (який саме ел масиву) при виклику ф - далі в іншій ф що відповідає за те який слайд є активним
 const renderSlide = function renderSlide ({
   id,
   title,
@@ -87,7 +89,7 @@ const renderSlide = function renderSlide ({
   $heroButton.style.backgroundColor = colorButton;
   $heroButton.innerText = textButton;
 
-  // це анімація тесту та заголовку (частина тут, частина в css)
+  // це анімація тесту та заголовку (частина тут, частина в css); це можна було все записати в css і тут додавати/прибирати класи,  але коду менше не буде
   $heroTitle.style.opacity = 0;
   $heroTitle.style.transform = 'translateY(-50%)';
   $heroText.style.opacity = 0;
@@ -102,6 +104,20 @@ const renderSlide = function renderSlide ({
   }, 500)
 };
 
+const renderImages = function renderImages(activeIdx) {
+  const $heroImg = [...$heroImgs.children];
+$heroImg.forEach((el, idx) => {
+  if(idx === activeIdx) {
+    el.classList.add('hero__img--active');
+  } else {
+    el.classList.remove('hero__img--active');
+  }
+})
+  console.log($heroImg);
+};
+
+renderImages();
+
 // функція створює динамічну пагінацію (що залежить від кількості слайдів): робимо змінну що === довжині масиву
 // далі створюємо масив з цією кількістю елеметів і в кожен мепимо div з класом -item...
 // потім в div що знаходимо в html додаємо всі ці елементи (нові div dots)
@@ -111,11 +127,15 @@ const renderPagination = function renderPagination() {
   const size = heroSlides.length;
   const dots = [...new Array(size)].map(() => `<div class='hero__pagtination-item'></div>`).join('');
   $heroPagination.innerHTML = dots;
-  console.log(new Array(4), [...new Array(4)]); // НЕ РОЗУМІЮ ???
+  console.log(new Array(4), [...new Array(4)]); //  різниця в тому що зі спредом ми отрим саме 4 undefined, а просто через new Array 4 пустих ел; але нащо нам саме undefined отримувати? 
 };
 
 renderPagination(); 
 
+// в ф нижче дістаємо вкладені div з пагінації (спочатку заспредевши в масив) і перебираємо їх (для цього і спредили)
+// якщо індекс === акиивний індекс то додаємо клас ектів в цей дів; і навпаки видаляємо його коли інд === інд  не активний
+// робимо це окремою ф а не в ф вище (через ${} і ? :) для створення анімації
+// параметр в дужках передеємо при виклику - в ф renderSlideFactory () тобто при кожному кліку вперед/назад буде її виклик
 const changePagination = function changePagination(activeIdx) {
   [...$heroPagination.children].forEach((el, idx) => {
     if(idx === activeIdx) {
@@ -128,27 +148,30 @@ const changePagination = function changePagination(activeIdx) {
 
 // функція нижче повертає нову функцію - для того що б далі присвоїти зміним які відповідають за кнопки вперед/назад (пояснення далі)
 // в функції спочатку отримуємо ІД слайду з дата атрибуту hero (в ф вище записували його) + одразу перетвор в число;
-// далі перевіряємо: якщо атрибут 1/2/3/4 то знаходимо його індекс (101р./це мб 0/1/2/3), далі знаходимо наступний індекс і перевіряємо його: 
-// якщо він(nextIndex) дорівнює довжині масиву(4) то його індекс буде 0 (тобто зарендеремо перший слайд) інакше буде просто наступний індекс (наступний слайд - 106р.), або ж буде останній слайд якщо;
-// якщо ж атрибута взагалі нема ще то одразу покажемо на сторінці перший слайд (113р.)
+// далі перевіряємо: якщо атрибут 1/2/3/4 то знаходимо його індекс (101р., це мб 0/1/2/3), далі знаходимо наступний індекс і перевіряємо його: 
+// якщо він(currentIndex) дорівнює довжині масиву(4) то його індекс буде 0 (тобто зарендеремо перший слайд) інакше буде просто наступний індекс (наступний слайд - 106р.), або ж буде останній слайд якщо;
+// якщо ж атрибута взагалі нема ще то одразу покажемо на сторінці перший слайд
 const renderSlideFactory = function renderSlideFactory(multiply) {
   return function() {
-    const activeId = Number($hero.dataset.active);
-    let nextIndex = 0;
+    const activeId = Number($hero.dataset.active);  //  1id / 0idx
+    let currentIndex = 0;
   if(activeId) {
-    const index = heroSlides.findIndex(({id}) => id === activeId);
-    nextIndex = index + 1 * multiply;
-    if(nextIndex === heroSlides.length && multiply > 0) {
-      nextIndex = 0;
+    const prevIndex = heroSlides.findIndex(({id}) => id === activeId); //  1id / 0idx
+    currentIndex = prevIndex + 1 * multiply; 
+    console.log('before if:', `current idx: ${currentIndex}`, `prev idx: ${prevIndex}`);
+    if(!heroSlides[currentIndex] && multiply > 0) {
+      currentIndex = 0;
     }
-    if(nextIndex === heroSlides.length && multiply < 0) {
-      nextIndex = heroSlides.length - 1;
+    if(currentIndex < 0) {
+      currentIndex = heroSlides.length - 1;
     }
-    renderSlide(heroSlides[nextIndex]);
+    renderSlide(heroSlides[currentIndex]);
+    console.log('after if:', `current idx: ${currentIndex}`, `prev idx: ${prevIndex}`);
   } else {
   renderSlide(heroSlides[0]);
   }
-  changePagination(nextIndex);
+  changePagination(currentIndex);
+  renderImages(currentIndex)
   }
 }
 
