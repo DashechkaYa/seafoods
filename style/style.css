@@ -150,18 +150,6 @@ h1 {
   min-height: 162px;
 }
 
-/* @media screen and (min-width: 1338px) {
-  .hero__content {
-    padding-left: 9%;
-  }
-}
-
-@media screen and (max-width: 1126px) {
-  .hero__content {
-    padding-left: 1.6rem;
-  }
-} */
-
 .hero__title {
   color: #282828;
   font-family: "Melodrama", sans-serif;
@@ -204,6 +192,12 @@ h1 {
   transition: background-color 0.6s ease;
 }
 
+.hero__product-info-block {
+  padding-top: 12.1rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
 .hero__image-box {
   flex: 0 0 45%;
   /* position: relative; */
@@ -227,6 +221,18 @@ h1 {
   position: absolute;
   right: 0%;
   top: 0%;
+  transition-property: opacity, transform;
+  transition-duration: 0.5s;
+  transition-timing-function: ease;
+}
+
+.hero__imgs--start {
+  opacity: 0;
+  transform: translateY(-50%);
+}
+.hero__imgs--end {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero__img {
@@ -290,7 +296,7 @@ h1 {
   background: transparent;
   transform: rotate(45deg);
   transition-property: background-color, transform;
-  transition-duration: 0.5s;
+  transition-duration: 0.6s;
   transition-timing-function: ease;
 }
 
@@ -315,6 +321,7 @@ h1 {
   flex-shrink: 0;
   border-radius: 50%;
   border: 1px solid #28282800;
+  transition: background-color 0.6s ease;
   cursor: pointer;
 }
 
@@ -325,12 +332,13 @@ h1 {
   height: 100vh;
   background-color: #f6f4f0;
   position: relative;
-  z-index: -2;
 }
 
 .nachhaltiger-section__inner {
   display: flex;
   gap: 9.1rem;
+  position: relative;
+  z-index: 1;
 }
 
 .nachhaltiger-section__block {
@@ -366,8 +374,6 @@ h1 {
   border: transparent;
   background-color: transparent;
   cursor: pointer;
-  /* position: relative;
-  z-index: 4; */
 }
 
 .nachhaltiger-section__button-img {
@@ -399,7 +405,6 @@ h1 {
   position: absolute;
   top: 9%;
   left: 6%;
-  z-index: -1;
 }
 
 .philosophie-section {
@@ -409,7 +414,11 @@ h1 {
   height: 200vh;
   background-color: #edeae4;
   position: relative;
-  z-index: -2;
+}
+
+.philosophie-section__inner {
+  position: relative;
+  z-index: 1;
 }
 
 .philosophie-section__title {
@@ -491,7 +500,6 @@ h1 {
   position: absolute;
   top: 13.5%;
   left: 6%;
-  z-index: -1;
 }
 
 .statistic-section {
@@ -503,7 +511,6 @@ h1 {
   background-size: cover;
   background-position: 50% 50%;
   position: relative;
-  z-index: -2;
 }
 
 .statistic-section__text {
@@ -517,11 +524,13 @@ h1 {
   max-width: 88rem;
   display: block;
   margin: 0 auto;
+  position: relative;
+  z-index: 2;
 }
 
 .statistic-section__img {
   position: absolute;
-  z-index: -1;
+  z-index: 1;
 }
 
 .statistic-section__img:nth-of-type(1) {

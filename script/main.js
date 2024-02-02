@@ -9,7 +9,7 @@ const heroSlides = [
   color: '#363636',
   colorButton: '#3F3F3F',
   textButton: 'jtz welt retten!',
-  image: '',
+  sliderArrowsColor: '#585858',
   option: [],
 },
 {
@@ -19,7 +19,7 @@ const heroSlides = [
   color: '#E9CDB1',
   colorButton: '#DDC1A0',
   textButton: 'MEHR ERFAHREN', 
-  image: '',
+  sliderArrowsColor: '#efdcc9',
   option: [
     {name: 'HERKUNFT', value: 'SYRIEN'},
     {name: 'REGION', value: 'NAHER OSTEN'},
@@ -34,7 +34,7 @@ const heroSlides = [
   color: '#E9B79D',
   colorButton: '#E0AB90',
   textButton: 'MEHR ERFAHREN', 
-  image: '',
+  sliderArrowsColor: '#f2cebb',
   option: [
     {name: 'HERKUNFT', value: 'SYRIEN'},
     {name: 'REGION', value: 'NAHER OSTEN'},
@@ -49,7 +49,7 @@ const heroSlides = [
   color: '#BA6969',
   colorButton: '#AE5E5E',
   textButton: 'MEHR ERFAHREN', 
-  image: '',
+  sliderArrowsColor: '#d79c9c',
   option: [
     {name: 'HERKUNFT', value: 'SYRIEN'},
     {name: 'REGION', value: 'NAHER OSTEN'},
@@ -69,6 +69,7 @@ const $heroPagination = document.getElementById('hero-pagination');
 const $heroPrev = document.getElementById('hero-prev');
 const $heroNext = document.getElementById('hero-next');
 const $heroImgs = document.getElementById('hero-imgs');
+const $heroProductInfoBlock = document.getElementById('hero-product-info-block');
 
 // в функції спочатку деструктуризуємо по ключам елемент масиву (обєкт); 
 // далі записуємо в дата атрибут hero в html ІД обєкту з масиву (щоб фіксувати який слайд на сторінці зараз - потрібно для кнопок вперед/назад);
@@ -81,13 +82,16 @@ const renderSlide = function renderSlide ({
   color,
   colorButton,
   textButton,
-  image,
+  sliderArrowsColor,
   option,
 }) {
   $hero.dataset.active = id;
   $heroColor.style.backgroundColor = color;
   $heroButton.style.backgroundColor = colorButton;
   $heroButton.innerText = textButton;
+  $heroNext.style.backgroundColor = sliderArrowsColor;
+  $heroPrev.style.backgroundColor = sliderArrowsColor;
+  $heroProductInfoBlock.innerText = option;
 
   // це анімація тесту та заголовку (частина тут, частина в css); це можна було все записати в css і тут додавати/прибирати класи,  але коду менше не буде
   $heroTitle.style.opacity = 0;
@@ -104,18 +108,37 @@ const renderSlide = function renderSlide ({
   }, 500)
 };
 
-const renderImages = function renderImages(activeIdx) {
-  const $heroImg = [...$heroImgs.children];
-$heroImg.forEach((el, idx) => {
-  if(idx === activeIdx) {
-    el.classList.add('hero__img--active');
-  } else {
-    el.classList.remove('hero__img--active');
-  }
-})
-  console.log($heroImg);
+
+const animateImages = function animateImages($element, name, duration = 500, content) {
+  console.log(content);
+  const classNameStart = `${name}--start`;
+  const classNameEnd = `${name}--end`;
+
+  $element.classList.add(classNameStart);
+  $element.classList.remove(classNameEnd);
+  setTimeout(() => {
+    if (content) {
+    $element.innerHTML = content;
+    $element.classList.remove(classNameStart);
+    $element.classList.add(classNameEnd);
+    }
+  }, duration);
 };
 
+const renderImages = function renderImages(activeIdx) {
+  const $heroImg = [...$heroImgs.children];
+  $heroImg.forEach((el, idx) => {
+    if(idx === activeIdx) {
+      el.classList.add('hero__img--active');
+    } else {
+      el.classList.remove('hero__img--active');
+    }
+  })
+  animateImages($heroImgs, "hero__imgs", 500, `${$heroImg}.hero__img--active`);
+  // console.log($heroImg.getAttribute());
+};
+
+// одразу викликали що б зарендерити перше фото 
 renderImages();
 
 // функція створює динамічну пагінацію (що залежить від кількості слайдів): робимо змінну що === довжині масиву
@@ -127,9 +150,9 @@ const renderPagination = function renderPagination() {
   const size = heroSlides.length;
   const dots = [...new Array(size)].map(() => `<div class='hero__pagtination-item'></div>`).join('');
   $heroPagination.innerHTML = dots;
-  console.log(new Array(4), [...new Array(4)]); //  різниця в тому що зі спредом ми отрим саме 4 undefined, а просто через new Array 4 пустих ел; але нащо нам саме undefined отримувати? 
 };
 
+// одразу викликали що б зарендерити на сторінку пагінацію
 renderPagination(); 
 
 // в ф нижче дістаємо вкладені div з пагінації (спочатку заспредевши в масив) і перебираємо їх (для цього і спредили)
