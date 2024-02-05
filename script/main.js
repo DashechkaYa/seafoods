@@ -69,7 +69,10 @@ const $heroPagination = document.getElementById('hero-pagination');
 const $heroPrev = document.getElementById('hero-prev');
 const $heroNext = document.getElementById('hero-next');
 const $heroImgs = document.getElementById('hero-imgs');
-const $heroProductInfoBlock = document.getElementById('hero-product-info-block');
+// const $heroOptionTitle = document.getElementById('hero__option-title');
+// const $heroOptionText = document.getElementById('hero__option-text');
+const $heroOptionColumn = document.getElementById('hero__option-column');
+
 
 // в функції спочатку деструктуризуємо по ключам елемент масиву (обєкт); 
 // далі записуємо в дата атрибут hero в html ІД обєкту з масиву (щоб фіксувати який слайд на сторінці зараз - потрібно для кнопок вперед/назад);
@@ -83,7 +86,7 @@ const renderSlide = function renderSlide ({
   colorButton,
   textButton,
   sliderArrowsColor,
-  option,
+  option
 }) {
   $hero.dataset.active = id;
   $heroColor.style.backgroundColor = color;
@@ -91,7 +94,6 @@ const renderSlide = function renderSlide ({
   $heroButton.innerText = textButton;
   $heroNext.style.backgroundColor = sliderArrowsColor;
   $heroPrev.style.backgroundColor = sliderArrowsColor;
-  $heroProductInfoBlock.innerText = option;
 
   // це анімація тесту та заголовку (частина тут, частина в css); це можна було все записати в css і тут додавати/прибирати класи,  але коду менше не буде
   $heroTitle.style.opacity = 0;
@@ -108,9 +110,24 @@ const renderSlide = function renderSlide ({
   }, 500)
 };
 
+const addHeroOption = function addHeroOption(activeIdx) {
+  heroSlides.forEach((el, idx) => {
+    if(idx === activeIdx) {
+      el.option.map((el) => {
+          $heroOptionColumn.innerHTML = `<h4 class="hero__option-title">${el.name}</h4>`;
+          $heroOptionColumn.innerHTML = `<p class="hero__option-text">${el.value}</p>`;
+      })
+    } 
+    else {
+      // $heroOptionColumn.children.remove();
+    }
+    });
+};
+
+addHeroOption();
 
 const animateImages = function animateImages($element, name, duration = 500, content) {
-  console.log(content);
+  // console.log($element);
   const classNameStart = `${name}--start`;
   const classNameEnd = `${name}--end`;
 
@@ -127,6 +144,7 @@ const animateImages = function animateImages($element, name, duration = 500, con
 
 const renderImages = function renderImages(activeIdx) {
   const $heroImg = [...$heroImgs.children];
+  // console.log($heroImg);
   $heroImg.forEach((el, idx) => {
     if(idx === activeIdx) {
       el.classList.add('hero__img--active');
@@ -194,7 +212,8 @@ const renderSlideFactory = function renderSlideFactory(multiply) {
   renderSlide(heroSlides[0]);
   }
   changePagination(currentIndex);
-  renderImages(currentIndex)
+  renderImages(currentIndex);
+  addHeroOption(currentIndex);
   }
 }
 

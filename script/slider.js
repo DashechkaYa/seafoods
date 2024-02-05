@@ -1,17 +1,17 @@
-const swiper = new Swiper('.hero', {
+const swiper = new Swiper('.swiper', {
   // Optional parameters
   direction: 'horizontal',
   loop: true,
 
   // If we need pagination
   pagination: {
-    el: '.hero__slider-pagination',
+    el: '.swiper-pagination',
   },
 
   // Navigation arrows
   navigation: {
-    nextEl: '.hero__slider-arrow-next',
-    prevEl: '.hero__slider-arrow-prev',
+    nextEl: '.swiper-button__next',
+    prevEl: '.swiper-button__prev',
   },
 
   // And if we need scrollbar

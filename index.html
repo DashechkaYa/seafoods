@@ -48,7 +48,12 @@
             <p id="hero-text" class="hero__text"></p>
           </div>
           <button id="hero-button" class="hero__button" type="button"></button>
-          <div id="hero-product-info-block" class="hero__product-info-block"></div>
+          <div id="hero-option-block" class="hero__option-block">
+            <div class="hero__option-column">
+              <h4 class="hero__option-title"></h4>
+              <p class="hero__option-text"></p>
+            </div>
+          </div>
         </div>
         <div class="hero__image-box">
           <div id="hero-color" class="hero__color">
@@ -83,8 +88,8 @@
               den
               Handel neu zu
               gestalten. Wir stehen für faire Zusammenarbeit mit Erzeuger*innen und nachhaltige Lösungen.</p>
-            <button class="nachhaltiger-section__button" type="button"><img class="nachhaltiger-section__button-img"
-                class="nachhaltiger-section__button-img" src="img/Button.png" alt="button image">
+            <button class="nachhaltiger-section__button" type="button">
+              <img class="nachhaltiger-section__button-img" src="img/Button.png" alt="button image">
             </button>
           </div>
           <div class="nachhaltiger-section__block">
@@ -161,13 +166,156 @@
     </section>
 
     <section class="slider-section">
-
+      <div class="container">
+        <div class="slider-section__top-box">
+          <h2 class="slider-section__title">Artikel & Neuigkeiten</h2>
+          <button type="button" class="slider-section__button">
+            <img class="ÜBER-button-img" src="img/Button.png" alt="button image">
+          </button>
+        </div>
+        <img class="slider-section__bg-img" src="img/blog.png" alt="background image">
+      </div>
+      <div class="swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img class="swiper-slide__img" src="img/food-1.png" alt="food photo">
+            <div class="swiper-slide__signs">
+              <img class="swiper-slide__sign" src="img/rezept.png" alt="rezept">
+              <img class="swiper-slide__sign" src="img/vegan.png" alt="vegan">
+            </div>
+            <h5 class="swiper-slide__title">Fruchtiger Radicchio Salat</h5>
+            <p class="swiper-slide__text">Radicchio ist ein feiner, aber recht bitterer Salat. Um diese Eigenschaft
+              perfekt auszugleichen, einfach
+              mit süßen Früchten kombinieren. Hier unsere Idee dazu.</p>
+          </div>
+          <div class="swiper-slide">
+            <img class="swiper-slide__img" src="img/food-2.png" alt="food photo">
+            <img class="swiper-slide__sign" src="img/rezept.png" alt="rezept">
+            <h5 class="swiper-slide__title">Aglio e Olio</h5>
+            <p class="swiper-slide__text">Spaghetti Aglio e Olio e Peperoncino. Eigentlich schon alles gesagt oder? Es
+              ist ein einfaches Gericht,
+              aber wir verraten euch hier die Geheimnisse zur Perfektion!</p>
+          </div>
+          <div class="swiper-slide">
+            <img class="swiper-slide__img" src="img/food-3.png" alt="food photo">
+            <img class="swiper-slide__sign" src="img/rezept.png" alt="rezept">
+            <h5 class="swiper-slide__title">Auberginen Lasagne</h5>
+            <p class="swiper-slide__text">Lasagne mag eigentlich jeder. Doch eine vegetarische Version mit vollem
+              Geschmack haben wir oft vermisst.
+              Doch diese Auberginen Lasagne füllt die Lücke!</p>
+          </div>
+          <div class="swiper-slide">
+            <img class="swiper-slide__img" src="img/food-4.png" alt="food photo">
+            <div class="swiper-slide__signs">
+              <img class="swiper-slide__sign" src="img/rezept.png" alt="rezept">
+              <img class="swiper-slide__sign" src="img/vegan.png" alt="vegan">
+            </div>
+            <h5 class="swiper-slide__title">Spaghetti al Pomodoro</h5>
+            <p class="swiper-slide__text">Eine der schnellsten Pastagerichte die wir kennen und lieben. Fruchtige Tomate
+              trifft würzigen Rucola.
+              Eine perfekte Kombination. </p>
+          </div>
+          <div class="swiper-slide">
+            <img class="swiper-slide__img" src="img/food-5.png" alt="food photo">
+            <img class="swiper-slide__sign" src="img/rezept.png" alt="rezept">
+            <h5 class="swiper-slide__title">Tomatenrisotto mit Rosmarin</h5>
+            <p class="swiper-slide__text">Es riecht nach mediterraner Küche. Rosmarin, Tomate und Olivenöl. Dieses
+              aromatische Risotto ist cremig
+              und knusprig zugleich. </p>
+          </div>
+          <div class="swiper-slide">
+            <img class="swiper-slide__img" src="img/food-6.png" alt="food photo">
+            <div class="swiper-slide__signs">
+              <img class="swiper-slide__sign" src="img/rezept.png" alt="rezept">
+              <img class="swiper-slide__sign" src="img/vegan.png" alt="vegan">
+            </div>
+            <h5 class="swiper-slide__title">Gnocchi mit Tomatensugo</h5>
+            <p class="swiper-slide__text">Lockere Gnocchi mit fruchtigem Tomatensugo und frischem Rucola Salat. Der
+              kleine Aufwand lohnt sich, denn frischer gehts nicht!</p>
+          </div>
+        </div class="swiper-buttons">
+        <button class="swiper-button__prev swiper-button"><img class="swiper-expand" src="img/Expandleft.png"
+            alt="arrow-previous"></button>
+        <button class="swiper-button__next swiper-button"><img class="swiper-expand" src="img/ExpandRight.png"
+            alt="arrow-next"></button>
+      </div>
     </section>
   </main>
 
+  <footer class="footer">
+    <img class="footer__line" src="img/footer-line.png" alt="">
+    <div class="container">
+      <div class="footer__row">
+        <div class="footer__column">
+          <img class="footer__logo" src="img/Logo-short.png" alt="logo">
+          <p class="footer__text footer__text--bigger">SOS Foods GmbH<br>
+            Mainzer Straße 53<br>
+            50678 Köln</p>
+          <a class="footer__link footer__link--lowercase" href="mailto:info@sosfoods.de">info@sosfoods.de</a>
+        </div>
+        <div class="footer__column">
+          <h6 class="footer__title">Info</h6>
+          <a class="footer__link" href="">HOME</a>
+          <a class="footer__link" href="">PHILOSOPHIE</a>
+          <a class="footer__link" href="">ÜBER UNS</a>
+          <a class="footer__link" href="">BLOG</a>
+        </div>
+        <div class="footer__column">
+          <h6 class="footer__title">Shop</h6>
+          <a class="footer__link" href="">SHOP</a>
+          <a class="footer__link" href="">WARENKORB</a>
+          <a class="footer__link" href="">KASSE</a>
+          <a class="footer__link" href="">HILFE</a>
+        </div>
+        <div class="footer__column">
+          <h6 class="footer__title">Kontakt</h6>
+          <a class="footer__link" href="">SPENDEN</a>
+          <a class="footer__link" href="">PRESSE</a>
+          <a class="footer__link" href="">B2B</a>
+        </div>
+        <div class="footer__column">
+          <h6 class="footer__title">Social</h6>
+          <a class="footer__link" href="">INSTAGRAM</a>
+          <a class="footer__link" href="">FACEBOOK</a>
+          <a class="footer__link" href="">PINTEREST</a>
+        </div>
+      </div>
+      <div class="footer__row">
+        <div class="footer__form-block">
+          <h6 class="footer__title">Bleib auf dem Laufenden</h6>
+          <p class="footer__text">Abonniere unseren Newsletter. Maximal eine Mail pro Monat, Ehrenwort!</p>
+          <form class="footer__form feedback-form" action="">
+            <input class="feedback-form__input" type="text">
+            <button class="feedback-form__button" type="submit">jtz bestellen</button>
+          </form>
+          <p class="footer__form-signature">E-MAIL ADRESSE</p>
+        </div>
+        <div class="footer__pay-block">
+          <img class="footer__pay-img" src="img/pay-img-1.png" alt="pay logo">
+          <img class="footer__pay-img" src="img/pay-img-2.png" alt="pay logo">
+          <img class="footer__pay-img" src="img/pay-img-3.png" alt="pay logo">
+          <img class="footer__pay-img" src="img/pay-img-4.png" alt="pay logo">
+          <img class="footer__pay-img" src="img/pay-img-5.png" alt="pay logo">
+          <img class="footer__pay-img" src="img/pay-img-6.png" alt="pay logo">
+        </div>
+      </div>
+      <div class="footer__row">
+        <div class="footer__signatures">
+          <p class="footer__signature">IMPRESSUM</p>
+          <p class="footer__signature">AGB</p>
+          <p class="footer__signature">DATENSCHUTZ</p>
+        </div>
+        <div class="footer__signatures">
+          <p class="footer__signature">MADE WITH<img class="footer__signature-image" src="img/heart.png"
+              alt="heart image">BY JARO.IO</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
 
   <script type="module" src="script/main.js"></script>
-  <!-- <script src="script/slider.js"></script> -->
+  <script src="script/slider.js"></script>
 </body>
 
 </html>
