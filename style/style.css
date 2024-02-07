@@ -677,6 +677,7 @@ h1 {
   position: absolute;
   right: 1%;
   bottom: 6%;
+  /* min-width: 0; */
 }
 
 .swiper-button {
