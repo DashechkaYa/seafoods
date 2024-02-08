@@ -8,9 +8,11 @@ const heroSlides = [
   description: 'Jeden Tag eine gute Tat. Mit unserem direkten Gewürzhandel kommt mehr Geld bei den Erzeuger*innen im Nahen Osten an und soziale Projekte in der Region erhalten 20% vom Umsatz. Zusammen machen wir den Unterschied!',
   color: '#363636',
   colorButton: '#3F3F3F',
+  colorButtonHover: '#686868',
   textButton: 'jtz welt retten!',
   sliderArrowsColor: '#585858',
-  option: [],
+  sliderArrowsColorHover: '#747474',
+  options: [],
 },
 {
   id: 2,
@@ -18,9 +20,11 @@ const heroSlides = [
   description: 'Die blumige, frische Koriandersaat ist geschmacklich nicht mit dem Koriandergrün zu vergleichen. Perfekt um jedes deiner Pfannengerichte abzurunden.',
   color: '#E9CDB1',
   colorButton: '#DDC1A0',
+  colorButtonHover: '#e9d3bb',
   textButton: 'MEHR ERFAHREN', 
   sliderArrowsColor: '#efdcc9',
-  option: [
+  sliderArrowsColorHover: '#f7eadd',
+  options: [
     {name: 'HERKUNFT', value: 'SYRIEN'},
     {name: 'REGION', value: 'NAHER OSTEN'},
     {name: 'VERARBEITUNG', value: 'GESCHROTET'},
@@ -33,9 +37,11 @@ const heroSlides = [
   description: 'Die frische Schärfe des Kreuzkümmels ist fester Bestandteil der orientalischen Küche. Ob im Hummus oder Falafel, Kreuzkümmel ist eine Geschmacksreise in die Tiefe des Orients.',
   color: '#E9B79D',
   colorButton: '#E0AB90',
+  colorButtonHover:  '#E0AB90',
   textButton: 'MEHR ERFAHREN', 
   sliderArrowsColor: '#f2cebb',
-  option: [
+  sliderArrowsColorHover: '#f8ded0',
+  options: [
     {name: 'HERKUNFT', value: 'SYRIEN'},
     {name: 'REGION', value: 'NAHER OSTEN'},
     {name: 'VERARBEITUNG', value: 'GESCHROTET'},
@@ -48,9 +54,11 @@ const heroSlides = [
   description: 'Unser fruchtig warmer Paprika bringt Sonne in deine Küche. Dieses Gewürz rundet viele Gerichte ab. Im Gulasch oder im Dip - Paprika bringt dir die nötige Wärme.',
   color: '#BA6969',
   colorButton: '#AE5E5E',
+  colorButtonHover:  '#c27676',
   textButton: 'MEHR ERFAHREN', 
   sliderArrowsColor: '#d79c9c',
-  option: [
+  sliderArrowsColorHover: '#e9bbbb',
+  options: [
     {name: 'HERKUNFT', value: 'SYRIEN'},
     {name: 'REGION', value: 'NAHER OSTEN'},
     {name: 'VERARBEITUNG', value: 'PULVER'},
@@ -69,9 +77,7 @@ const $heroPagination = document.getElementById('hero-pagination');
 const $heroPrev = document.getElementById('hero-prev');
 const $heroNext = document.getElementById('hero-next');
 const $heroImgs = document.getElementById('hero-imgs');
-// const $heroOptionTitle = document.getElementById('hero__option-title');
-// const $heroOptionText = document.getElementById('hero__option-text');
-const $heroOptionColumn = document.getElementById('hero__option-column');
+const $heroOptionBlock = document.getElementById('hero-option-block');
 
 
 // в функції спочатку деструктуризуємо по ключам елемент масиву (обєкт); 
@@ -86,7 +92,7 @@ const renderSlide = function renderSlide ({
   colorButton,
   textButton,
   sliderArrowsColor,
-  option
+  options
 }) {
   $hero.dataset.active = id;
   $heroColor.style.backgroundColor = color;
@@ -100,6 +106,7 @@ const renderSlide = function renderSlide ({
   $heroTitle.style.transform = 'translateY(-50%)';
   $heroText.style.opacity = 0;
   $heroText.style.transform = 'translateX(-50%)';
+  $heroOptionBlock.style.opacity = 0;
   setTimeout(() => {
     $heroTitle.style.opacity = 1;
     $heroTitle.style.transform = 'translateY(0)';
@@ -107,63 +114,90 @@ const renderSlide = function renderSlide ({
     $heroText.style.transform = 'translateX(0)';
     $heroTitle.innerText = title;
     $heroText.innerText = description;
+    $heroOptionBlock.style.opacity = 1;
+    $heroOptionBlock.innerHTML = options.map((el) => {
+      `<li class="hero__option-column">
+    <h4 class="hero__option-title">${el?.name}</h4>
+    <p class="hero__option-text">${el?.value}</p>
+  </li>`;
+  // el.value.style.color = color;
+  // console.log(el.name);
+    });
   }, 500)
 };
 
-const addHeroOption = function addHeroOption(activeIdx) {
+$heroNext.addEventListener('mouseover', () => {
   heroSlides.forEach((el, idx) => {
-    if(idx === activeIdx) {
-      el.option.map((el) => {
-          $heroOptionColumn.innerHTML = `<h4 class="hero__option-title">${el.name}</h4>`;
-          $heroOptionColumn.innerHTML = `<p class="hero__option-text">${el.value}</p>`;
-      })
-    } 
-    else {
-      // $heroOptionColumn.children.remove();
+    if(idx === Number($hero?.dataset)) {
+      $heroNext.style.backgroundColor = el.sliderArrowsColorHover;
+    console.log(el.sliderArrowsColorHover);
+    } else {
+      $heroNext.style.backgroundColor = el.sliderArrowsColor;
     }
-    });
-};
+  })
+});
 
-addHeroOption();
+$heroPrev.addEventListener('mouseover', () => {
+  heroSlides.forEach((el, idx) => {
+    if(idx === Number($hero?.dataset)) {
+      $heroPrev.style.backgroundColor = el.sliderArrowsColorHover;
+      console.log(el.sliderArrowsColorHover);
+    } else {
+      $heroNext.style.backgroundColor = el.sliderArrowsColor;
+    }
+  })
+});
 
-const animateImages = function animateImages($element, name, duration = 500, content) {
-  // console.log($element);
+$heroButton.addEventListener('mouseover', () => {
+  heroSlides.forEach((el, idx) => {
+    if(idx === Number($hero?.dataset)) {
+      $heroButton.style.backgroundColor = el.colorButtonHover;
+      console.log(el.colorButtonHover);
+    }
+  })
+});
+
+// ф нижче спочатку створює 2 класи -start та -end за доп параметрів (вони передаються при її виклику в наступній ф renderImages)
+// далі в div обгортку цих картинок додаємо або видаляємо ці класи (класи що містять анімацію в css)
+const animateImages = function animateImages($element, name, duration = 500) {
   const classNameStart = `${name}--start`;
   const classNameEnd = `${name}--end`;
-
   $element.classList.add(classNameStart);
   $element.classList.remove(classNameEnd);
   setTimeout(() => {
-    if (content) {
-    $element.innerHTML = content;
     $element.classList.remove(classNameStart);
     $element.classList.add(classNameEnd);
-    }
   }, duration);
 };
 
+
+// в ф нижче спочатку робимо масив з картинок що є в середині зарання знайденого елементу (обгортки цих картинок) за доп спред оператора
+// далі проходимось по кожному елементу перевіряючи на активний індекс(що в параметрі ф - передаємо цей параметр в ф renderSlideFactory)
+// і додаємо йому клас active (в css це робить картинку display: block з display: none) - 
+// - робимо це з setTimeout через 500млс - щоб спочатку виконалась анімація а тільки потім зявилось нове фото (інакше воно з'являється ще до анімації)
+// також одразу викликаємо ф анімацію для картинки що написана вище
 const renderImages = function renderImages(activeIdx) {
-  const $heroImg = [...$heroImgs.children];
-  // console.log($heroImg);
-  $heroImg.forEach((el, idx) => {
-    if(idx === activeIdx) {
-      el.classList.add('hero__img--active');
-    } else {
-      el.classList.remove('hero__img--active');
-    }
+  const heroImgs = [...$heroImgs.children];
+  heroImgs.forEach((el, idx) => {
+    setTimeout(() => {
+      if(idx === activeIdx) {
+        el.classList.add('hero__img--active');
+      } else {
+        el.classList.remove('hero__img--active');
+      }
+    }, 500)
   })
-  animateImages($heroImgs, "hero__imgs", 500, `${$heroImg}.hero__img--active`);
-  // console.log($heroImg.getAttribute());
+  animateImages($heroImgs, "hero__imgs", 500);
 };
 
 // одразу викликали що б зарендерити перше фото 
 renderImages();
 
 // функція створює динамічну пагінацію (що залежить від кількості слайдів): робимо змінну що === довжині масиву
-// далі створюємо масив з цією кількістю елеметів і в кожен мепимо div з класом -item...
-// потім в div що знаходимо в html додаємо всі ці елементи (нові div dots)
+// далі створюємо масив (за доп спред оператора - це масив з елементами undefined - це значить його можна перебирати) з цією кількістю елеметів і в кожен мепимо div з класом -item...
+// потім в div обгортку що знаходимо в html додаємо всі ці елементи (нові div dots)
 // викликаємо одразу цю ф одразу 1 раз
-// викликаємо її аж в ф renderSlideFactory - яка виконується при натиску на книпки назад/вперед
+// затім викликаємо її аж в ф renderSlideFactory - яка виконується при натиску на кнопки назад/вперед
 const renderPagination = function renderPagination() {
   const size = heroSlides.length;
   const dots = [...new Array(size)].map(() => `<div class='hero__pagtination-item'></div>`).join('');
@@ -174,8 +208,8 @@ const renderPagination = function renderPagination() {
 renderPagination(); 
 
 // в ф нижче дістаємо вкладені div з пагінації (спочатку заспредевши в масив) і перебираємо їх (для цього і спредили)
-// якщо індекс === акиивний індекс то додаємо клас ектів в цей дів; і навпаки видаляємо його коли інд === інд  не активний
-// робимо це окремою ф а не в ф вище (через ${} і ? :) для створення анімації
+// якщо індекс === атиивний індекс то додаємо клас active в цей дів; і навпаки видаляємо його коли інд !== інд активний
+// робимо це окремою ф а не в ф вище (через ${} і ? :) для створення анімації (вся анімація в css)
 // параметр в дужках передеємо при виклику - в ф renderSlideFactory () тобто при кожному кліку вперед/назад буде її виклик
 const changePagination = function changePagination(activeIdx) {
   [...$heroPagination.children].forEach((el, idx) => {
@@ -196,8 +230,9 @@ const renderSlideFactory = function renderSlideFactory(multiply) {
   return function() {
     const activeId = Number($hero.dataset.active);  //  1id / 0idx
     let currentIndex = 0;
+    let prevIndex = 0;
   if(activeId) {
-    const prevIndex = heroSlides.findIndex(({id}) => id === activeId); //  1id / 0idx
+    prevIndex = heroSlides.findIndex(({id}) => id === activeId); //  1id / 0idx
     currentIndex = prevIndex + 1 * multiply; 
     console.log('before if:', `current idx: ${currentIndex}`, `prev idx: ${prevIndex}`);
     if(!heroSlides[currentIndex] && multiply > 0) {
@@ -213,7 +248,6 @@ const renderSlideFactory = function renderSlideFactory(multiply) {
   }
   changePagination(currentIndex);
   renderImages(currentIndex);
-  addHeroOption(currentIndex);
   }
 }
 

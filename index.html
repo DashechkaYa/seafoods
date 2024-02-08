@@ -29,8 +29,10 @@
         </div>
         <div class="navbar__block">
           <a class="navbar__link" href="">SHOP</a>
-          <a class="navbar__link navbar__link-basket" href="">WARENKORB<span class="navbar__link-amount">
-              0</span></a>
+          <span class="navbar__link-basket">
+            <a class="navbar__link" href="">WARENKORB</a><span class="navbar__link-amount">
+              0</span>
+          </span>
         </div>
       </nav>
       <a class="logo" href="/"><img class="logo__item" src="img/Logo-Full.png" alt="logo"></a>
@@ -48,12 +50,7 @@
             <p id="hero-text" class="hero__text"></p>
           </div>
           <button id="hero-button" class="hero__button" type="button"></button>
-          <div id="hero-option-block" class="hero__option-block">
-            <div class="hero__option-column">
-              <h4 class="hero__option-title"></h4>
-              <p class="hero__option-text"></p>
-            </div>
-          </div>
+          <ul id="hero-option-block" class="hero__option-block"></ul>
         </div>
         <div class="hero__image-box">
           <div id="hero-color" class="hero__color">
@@ -70,9 +67,16 @@
           </div>
           <div id="hero-pagination" class="hero__pagination"></div>
           <div class="hero__slider-arrows">
-            <button id="hero-prev" class="hero__slider-arrow"><img src="img/Expandleft.svg"
-                alt="arrow-previous"></button>
-            <button id="hero-next" class="hero__slider-arrow"><img src="img/ExpandRight.svg" alt="arrow-next"></button>
+            <button id="hero-prev" class="hero__slider-arrow"><svg class="hero__slider-arrow-item" width="16"
+                height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M10.4715 3.52864C10.2111 3.26829 9.78903 3.26829 9.52868 3.52864L5.52868 7.52864C5.26833 7.78899 5.26833 8.2111 5.52868 8.47144L9.52868 12.4714C9.78903 12.7318 10.2111 12.7318 10.4715 12.4714C10.7318 12.2111 10.7318 11.789 10.4715 11.5286L6.94289 8.00004L10.4715 4.47145C10.7318 4.2111 10.7318 3.78899 10.4715 3.52864Z" />
+              </svg></button>
+            <button id="hero-next" class="hero__slider-arrow"><svg class="hero__slider-arrow-item" width="16"
+                height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M5.52851 12.4714C5.78886 12.7317 6.21097 12.7317 6.47132 12.4714L10.4713 8.47136C10.7317 8.21101 10.7317 7.7889 10.4713 7.52855L6.47132 3.52855C6.21097 3.2682 5.78886 3.2682 5.52851 3.52855C5.26816 3.7889 5.26816 4.21101 5.52851 4.47136L9.05711 7.99996L5.52851 11.5286C5.26816 11.7889 5.26816 12.211 5.52851 12.4714Z" />
+              </svg></button>
           </div>
         </div>
       </div>
@@ -89,13 +93,16 @@
               Handel neu zu
               gestalten. Wir stehen für faire Zusammenarbeit mit Erzeuger*innen und nachhaltige Lösungen.</p>
             <button class="nachhaltiger-section__button" type="button">
-              <img class="nachhaltiger-section__button-img" src="img/Button.png" alt="button image">
+              <img class="ÜBER-button-img" src="img/Button.png" alt="button image">
             </button>
           </div>
           <div class="nachhaltiger-section__block">
-            <img class="nachhaltiger-section__img" src="img/image-2-2section.png" alt="cup image">
-            <img class="nachhaltiger-section__img" src="img/image-3-2section.png" alt="portret image">
-            <img class="nachhaltiger-section__img" src="img/image-4-2section.png" alt="cup image">
+            <div class="nachhaltiger-section__img-container"><img class="nachhaltiger-section__img"
+                src="img/image-2-2section.png" alt="cup image"></div>
+            <div class="nachhaltiger-section__img-container"><img class="nachhaltiger-section__img"
+                src="img/image-3-2section.png" alt="portret image"></div>
+            <div class="nachhaltiger-section__img-container"><img class="nachhaltiger-section__img"
+                src="img/image-4-2section.png" alt="cup image"></div>
           </div>
         </div>
         <img class="nachhaltiger-section__bg-img" src="img/ÜBER-UNS.png" alt="background image">
@@ -168,7 +175,7 @@
     <section class="slider-section">
       <div class="container">
         <div class="slider-section__top-box">
-          <h2 class="slider-section__title">Artikel & Neuigkeiten</h2>
+          <h2 id="container-offset-size" class="slider-section__title">Artikel & Neuigkeiten</h2>
           <button type="button" class="slider-section__button">
             <img class="ÜBER-button-img" src="img/Button.png" alt="button image">
           </button>
@@ -233,17 +240,31 @@
             <p class="swiper-slide__text">Lockere Gnocchi mit fruchtigem Tomatensugo und frischem Rucola Salat. Der
               kleine Aufwand lohnt sich, denn frischer gehts nicht!</p>
           </div>
-        </div class="swiper-buttons">
-        <button class="swiper-button__prev swiper-button"><img class="swiper-expand" src="img/Expandleft.png"
-            alt="arrow-previous"></button>
-        <button class="swiper-button__next swiper-button"><img class="swiper-expand" src="img/ExpandRight.png"
-            alt="arrow-next"></button>
+        </div>
+      </div>
+      <div class="swiper-buttons container">
+        <button class="swiper-button__prev swiper-button"><svg class="swiper-expand" width="16" height="16"
+            viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M10.4715 3.52864C10.2111 3.26829 9.78903 3.26829 9.52868 3.52864L5.52868 7.52864C5.26833 7.78899 5.26833 8.2111 5.52868 8.47144L9.52868 12.4714C9.78903 12.7318 10.2111 12.7318 10.4715 12.4714C10.7318 12.2111 10.7318 11.789 10.4715 11.5286L6.94289 8.00004L10.4715 4.47145C10.7318 4.2111 10.7318 3.78899 10.4715 3.52864Z" />
+          </svg></button>
+        <button class="swiper-button__next swiper-button"><svg class="swiper-expand" width="16" height="16"
+            viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M5.52851 12.4714C5.78886 12.7317 6.21097 12.7317 6.47132 12.4714L10.4713 8.47136C10.7317 8.21101 10.7317 7.7889 10.4713 7.52855L6.47132 3.52855C6.21097 3.2682 5.78886 3.2682 5.52851 3.52855C5.26816 3.7889 5.26816 4.21101 5.52851 4.47136L9.05711 7.99996L5.52851 11.5286C5.26816 11.7889 5.26816 12.211 5.52851 12.4714Z" />
+          </svg></button>
       </div>
     </section>
   </main>
 
   <footer class="footer">
-    <img class="footer__line" src="img/footer-line.png" alt="">
+    <div class="footer__rec"></div>
+    <div class="grid-container">
+      <div class="grid grid--footer">
+        <div class="grid__horizontal grid__horizontal--footer"></div>
+        <div class="grid__vertical grid__vertical--footer"></div>
+      </div>
+    </div>
     <div class="container">
       <div class="footer__row">
         <div class="footer__column">
@@ -285,10 +306,10 @@
           <h6 class="footer__title">Bleib auf dem Laufenden</h6>
           <p class="footer__text">Abonniere unseren Newsletter. Maximal eine Mail pro Monat, Ehrenwort!</p>
           <form class="footer__form feedback-form" action="">
-            <input class="feedback-form__input" type="text">
+            <input class="feedback-form__input" type="email" id="email-input">
             <button class="feedback-form__button" type="submit">jtz bestellen</button>
+            <label class="feedback-form__label" for="email-input">E-MAIL ADRESSE</label>
           </form>
-          <p class="footer__form-signature">E-MAIL ADRESSE</p>
         </div>
         <div class="footer__pay-block">
           <img class="footer__pay-img" src="img/pay-img-1.png" alt="pay logo">
@@ -315,7 +336,7 @@
 
 
   <script type="module" src="script/main.js"></script>
-  <script src="script/slider.js"></script>
+  <script type="module" src="script/slider.js"></script>
 </body>
 
 </html>
