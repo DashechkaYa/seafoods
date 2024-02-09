@@ -72,6 +72,7 @@ const $hero = document.getElementById('hero');
 const $heroTitle = document.getElementById('hero-title');
 const $heroText = document.getElementById('hero-text');
 const $heroButton = document.getElementById('hero-button');
+const $heroButtonText = document.getElementById('hero-button-text');
 const $heroColor = document.getElementById('hero-color');
 const $heroPagination = document.getElementById('hero-pagination');
 const $heroPrev = document.getElementById('hero-prev');
@@ -100,7 +101,7 @@ const renderSlide = function renderSlide ({
   $hero.dataset.active = id;
   $heroColor.style.backgroundColor = color;
   $heroButton.style.backgroundColor = colorButton;
-  $heroButton.innerText = textButton;
+  $heroButtonText.innerText = textButton;
   $heroNext.style.backgroundColor = sliderArrowsColor;
   $heroPrev.style.backgroundColor = sliderArrowsColor;
 
@@ -146,7 +147,7 @@ $heroPrev.addEventListener('mouseover', () => {
       $heroPrev.style.backgroundColor = el.sliderArrowsColorHover;
       console.log(el.sliderArrowsColorHover);
     } else {
-      $heroNext.style.backgroundColor = el.sliderArrowsColor;
+      $heroPrev.style.backgroundColor = el.sliderArrowsColor;
     }
   })
 });
@@ -156,16 +157,24 @@ $heroButton.addEventListener('mouseover', () => {
     if(idx === Number($hero?.dataset)) {
       $heroButton.style.backgroundColor = el.colorButtonHover;
       console.log(el.colorButtonHover);
+    } else {
+      $heroButton.style.backgroundColor = el.colorButton;
     }
   })
 });
 
+// $heroButton.addEventListener('mouseout', () => {
+//   $heroButton.style.backgroundColor = el.colorButton;
+// })
+
 $menuBurger.addEventListener('click', () => {
-  $menuPopup.classList.add('active')
+  $menuPopup.classList.add('active');
+  document.body.style.overflow = 'hidden';
 });
 
 $burgerCross.addEventListener('click', () => {
-  $menuPopup.classList.remove('active')
+  $menuPopup.classList.remove('active');
+  document.body.style.overflow = '';
 });
 
 // ф нижче спочатку створює 2 класи -start та -end за доп параметрів (вони передаються при її виклику в наступній ф renderImages)

@@ -62,7 +62,17 @@ html {
   fill: #282828;
 }
 
-.menu-burger:hover .menu-burger__img {
+.menu-burger:hover {
+  transform: scale(1.2);
+  transition-duration: 0.2s;
+}
+
+.menu-burger:active {
+  transform: scale(1);
+  transition-duration: 0.2s;
+}
+
+.menu-burger:active .menu-burger__img {
   fill: #b87345;
 }
 
@@ -75,7 +85,17 @@ html {
   fill: #282828;
 }
 
-.menu-shopping-bag:hover .menu-shopping-bag__img {
+.menu-shopping-bag:hover {
+  transform: scale(1.2);
+  transition-duration: 0.2s;
+}
+
+.menu-shopping-bag:active {
+  transform: scale(1);
+  transition-duration: 0.2s;
+}
+
+.menu-shopping-bag:active .menu-shopping-bag__img {
   fill: #b87345;
 }
 
@@ -213,7 +233,17 @@ h1 {
   background-color: #7c8698;
 }
 
-.burger--cross:hover .burger__line {
+.burger--cross:hover {
+  transform: scale(1.3);
+  transition-duration: 0.2s;
+}
+
+.burger--cross:active {
+  transform: scale(1);
+  transition-duration: 0.2s;
+}
+
+.burger--cross:active .burger__line {
   background-color: #ca8f5e;
 }
 
@@ -336,8 +366,13 @@ h1 {
   display: block;
 } */
 
-.hero__button:active {
+/* .hero__button:active {
   text-decoration: underline #f6f4f0;
+} */
+
+.hero__button:active .hero__button-text {
+  display: block;
+  padding-bottom: 1px solid #fff;
 }
 
 .hero__option-block {
@@ -530,6 +565,50 @@ h1 {
 
 .hero__slider-arrow:active .hero__slider-arrow-item {
   fill: #0f0f0f;
+}
+
+@media screen and (max-width: 700px) {
+  .hero {
+    height: calc(145vh - 72px);
+  }
+  .hero__content {
+    flex: 0 0 100%;
+    padding-top: 8vh;
+  }
+  .hero__title {
+    font-size: 4rem;
+    line-height: 48px;
+  }
+  .hero__image-box {
+    flex: 0 0 100%;
+  }
+  .hero__color {
+    width: 100vw;
+    height: 30%;
+    transform: translateX(50vw);
+    transform: translateY(50vh);
+  }
+  .hero__imgs {
+    left: -90%;
+    top: 5%;
+    position: relative;
+  }
+  .hero__imgs--start {
+    opacity: 0;
+    transform: translateY(-30vh);
+  }
+  .hero__imgs--end {
+    opacity: 1;
+    transform: translateY(15vh);
+  }
+  .hero__pagination {
+    display: none;
+  }
+  .hero__slider-arrows {
+    position: absolute;
+    left: 16px;
+    bottom: 10vh;
+  }
 }
 
 .nachhaltiger-section {
