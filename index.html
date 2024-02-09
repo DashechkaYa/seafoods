@@ -22,6 +22,19 @@
   <header class="header">
     <div class="header__inner container">
       <nav class="navbar header__navbar">
+        <div id="menu-burger" class="menu-burger"><svg class="menu-burger__img" width="28" height="28"
+            viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M17.5 21H3.5V18.6667H17.5V21ZM24.5 15.1667H3.5V12.8333H24.5V15.1667ZM17.5 9.33333H3.5V7H17.5V9.33333Z" />
+          </svg>
+        </div>
+        <div class="menu-shopping-bag">
+          <svg class="menu-shopping-bag__img" width="28" height="28" viewBox="0 0 28 28" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M5.83333 25.6666H22.1667C23.4535 25.6666 24.5 24.6201 24.5 23.3333V10.4999C24.5 10.1905 24.3771 9.89375 24.1583 9.67496C23.9395 9.45617 23.6428 9.33325 23.3333 9.33325H19.8333V8.16658C19.8333 4.95009 17.2165 2.33325 14 2.33325C10.7835 2.33325 8.16667 4.95009 8.16667 8.16658V9.33325H4.66667C4.35725 9.33325 4.0605 9.45617 3.84171 9.67496C3.62292 9.89375 3.5 10.1905 3.5 10.4999V23.3333C3.5 24.6201 4.5465 25.6666 5.83333 25.6666ZM10.5 8.16658C10.5 6.23692 12.0703 4.66659 14 4.66659C15.9297 4.66659 17.5 6.23692 17.5 8.16658V9.33325H10.5V8.16658ZM5.83333 11.6666H8.16667V13.9999H10.5V11.6666H17.5V13.9999H19.8333V11.6666H22.1667L22.169 23.3333H5.83333V11.6666Z" />
+          </svg>
+        </div>
         <div class="navbar__block">
           <a class="navbar__link" href="">PHILOSOPHIE</a>
           <a class="navbar__link" href="">ÜBER UNS</a>
@@ -37,7 +50,21 @@
       </nav>
       <a class="logo" href="/"><img class="logo__item" src="img/Logo-Full.png" alt="logo"></a>
       <h1>Sosfoods</h1>
-    </div>
+      <div class="menu-popup" id="menu-popup">
+        <div class="menu-popup__window">
+          <div class="burger burger--cross" id="burger-cross">
+            <span class="burger__line burger__line--cross"></span>
+            <span class="burger__line burger__line--cross"></span>
+          </div>
+          <nav class="menu-popup__navbar navbar-list">
+            <a class="navbar-list__item" href="">PHILOSOPHIE</a>
+            <a class="navbar-list__item" href="">ÜBER UNS</a>
+            <a class="navbar-list__item" href="">BLOG</a>
+            <a class="navbar-list__item" href="">SHOP</a>
+          </nav>
+          <img class="menu-popup__bg-img" src="img/MENU.png" alt="background image">
+        </div>
+      </div>
     </div>
   </header>
 

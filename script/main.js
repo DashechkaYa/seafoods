@@ -78,6 +78,9 @@ const $heroPrev = document.getElementById('hero-prev');
 const $heroNext = document.getElementById('hero-next');
 const $heroImgs = document.getElementById('hero-imgs');
 const $heroOptionBlock = document.getElementById('hero-option-block');
+const $menuBurger = document.getElementById('menu-burger');
+const $menuPopup = document.getElementById('menu-popup');
+const $burgerCross = document.getElementById('burger-cross');
 
 
 // в функції спочатку деструктуризуємо по ключам елемент масиву (обєкт); 
@@ -155,6 +158,14 @@ $heroButton.addEventListener('mouseover', () => {
       console.log(el.colorButtonHover);
     }
   })
+});
+
+$menuBurger.addEventListener('click', () => {
+  $menuPopup.classList.add('active')
+});
+
+$burgerCross.addEventListener('click', () => {
+  $menuPopup.classList.remove('active')
 });
 
 // ф нижче спочатку створює 2 класи -start та -end за доп параметрів (вони передаються при її виклику в наступній ф renderImages)
