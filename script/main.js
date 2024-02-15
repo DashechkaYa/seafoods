@@ -37,7 +37,7 @@ const heroSlides = [
   description: 'Die frische Schärfe des Kreuzkümmels ist fester Bestandteil der orientalischen Küche. Ob im Hummus oder Falafel, Kreuzkümmel ist eine Geschmacksreise in die Tiefe des Orients.',
   color: '#E9B79D',
   colorButton: '#E0AB90',
-  colorButtonHover:  '#E0AB90',
+  colorButtonHover:  '#e9bfab',
   textButton: 'MEHR ERFAHREN', 
   sliderArrowsColor: '#f2cebb',
   sliderArrowsColorHover: '#f8ded0',
@@ -94,8 +94,10 @@ const renderSlide = function renderSlide ({
   description,
   color,
   colorButton,
+  colorButtonHover,
   textButton,
   sliderArrowsColor,
+  sliderArrowsColorHover,
   options
 }) {
   $hero.dataset.active = id;
@@ -104,6 +106,17 @@ const renderSlide = function renderSlide ({
   $heroButtonText.innerText = textButton;
   $heroNext.style.backgroundColor = sliderArrowsColor;
   $heroPrev.style.backgroundColor = sliderArrowsColor;
+
+  // const $root = document.querySelector(':root');
+  document.documentElement.style.setProperty('--slider-arrow-hover', sliderArrowsColorHover);
+
+  // нижче додаємо колір при наведенні на кнопку - тег style в html перед кнопкою з !important що б перебити інші стилі
+  const buttonHoverStyle = document.createElement('style');
+  buttonHoverStyle.innerHTML = `
+  .hero__button:hover {
+    background-color: ${colorButtonHover} !important;
+  }`;
+  $heroButton.before(buttonHoverStyle)
 
   // це анімація тесту та заголовку (частина тут, частина в css); це можна було все записати в css і тут додавати/прибирати класи,  але коду менше не буде
   $heroTitle.style.opacity = 0;
@@ -119,53 +132,14 @@ const renderSlide = function renderSlide ({
     $heroTitle.innerText = title;
     $heroText.innerText = description;
     $heroOptionBlock.style.opacity = 1;
-    $heroOptionBlock.innerHTML = options.map((el) => {
-      `<li class="hero__option-column">
-    <h4 class="hero__option-title">${el?.name}</h4>
-    <p class="hero__option-text">${el?.value}</p>
+    $heroOptionBlock.innerHTML = options.map((option) => {   // тут option це обєкт масиву options (тобто це не є елементом html)
+    return  `<li class="hero__option-column">
+    <h4 class="hero__option-title">${option?.name}</h4>
+    <p style="color: ${color};" class="hero__option-text">${option?.value}</p>
   </li>`;
-  // el.value.style.color = color;
-  // console.log(el.name);
-    });
+    }).join('');
   }, 500)
 };
-
-$heroNext.addEventListener('mouseover', () => {
-  heroSlides.forEach((el, idx) => {
-    if(idx === Number($hero?.dataset)) {
-      $heroNext.style.backgroundColor = el.sliderArrowsColorHover;
-    console.log(el.sliderArrowsColorHover);
-    } else {
-      $heroNext.style.backgroundColor = el.sliderArrowsColor;
-    }
-  })
-});
-
-$heroPrev.addEventListener('mouseover', () => {
-  heroSlides.forEach((el, idx) => {
-    if(idx === Number($hero?.dataset)) {
-      $heroPrev.style.backgroundColor = el.sliderArrowsColorHover;
-      console.log(el.sliderArrowsColorHover);
-    } else {
-      $heroPrev.style.backgroundColor = el.sliderArrowsColor;
-    }
-  })
-});
-
-$heroButton.addEventListener('mouseover', () => {
-  heroSlides.forEach((el, idx) => {
-    if(idx === Number($hero?.dataset)) {
-      $heroButton.style.backgroundColor = el.colorButtonHover;
-      console.log(el.colorButtonHover);
-    } else {
-      $heroButton.style.backgroundColor = el.colorButton;
-    }
-  })
-});
-
-// $heroButton.addEventListener('mouseout', () => {
-//   $heroButton.style.backgroundColor = el.colorButton;
-// })
 
 $menuBurger.addEventListener('click', () => {
   $menuPopup.classList.add('active');

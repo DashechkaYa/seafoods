@@ -9,6 +9,7 @@
 :root {
   --cell-size: 40px;
   --cell-color: rgba(255, 255, 255, 0.2);
+  --slider-arrow-hover: transparent;
 }
 
 body {
@@ -347,8 +348,15 @@ h1 {
   letter-spacing: 0.22px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background-color 0.6s ease;
+  transition: filter, background-color 0.6s ease;
   position: relative;
+}
+
+.hero__button:hover {
+  transition-duration: 0.2s;
+
+  /* filter змінює яскравість кнопки (0.1-1 в темну сторону; 1-1.9 в світлу) - але в цьому випадку змінюємо через js */
+  /* filter: brightness(1.1); */
 }
 
 /* .hero__button::after {
@@ -557,6 +565,12 @@ h1 {
   transition: background-color 0.6s ease;
   cursor: pointer;
   background-color: #686868;
+}
+
+/* спосіб додати hover через js за допомогою хаку з root змінними */
+.hero__slider-arrow:hover {
+  transition-duration: 0.2s;
+  background-color: var(--slider-arrow-hover) !important;
 }
 
 .hero__slider-arrow-item {
