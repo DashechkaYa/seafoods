@@ -8,6 +8,14 @@ const initSider = function initSider() {
   // у знайденого елементу дізнаємося цю відстань - точку координат лівого краю елементу - це і є початок контейнеру і це змінна що якраз відповідає за відступ зліва у слайдера (згідно документації)
   const slidesOffsetBefore = containerOffsetSize.getBoundingClientRect().left;
 
+  const windowWidth = window.innerWidth;
+  let spaceBetween;
+  if(windowWidth < 760) {
+    spaceBetween = 20;
+  } else {
+    spaceBetween = 40;
+  }
+
   // ф що повертає слайдер що зарання встановлений з бібліотеки (прибрали його зі змінної - що б зробити ретьорн)
   return new Swiper('.swiper', {
     // Optional parameters
@@ -29,7 +37,7 @@ const initSider = function initSider() {
     slidesPerView: 'auto',
  
     // це як gap у слайдера - відстань між слайдами
-    spaceBetween: 40,
+    spaceBetween,
  
     // відступ зліва до всього слайдеру
     slidesOffsetBefore

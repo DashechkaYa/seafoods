@@ -107,7 +107,7 @@ const renderSlide = function renderSlide ({
   $heroNext.style.backgroundColor = sliderArrowsColor;
   $heroPrev.style.backgroundColor = sliderArrowsColor;
 
-  // const $root = document.querySelector(':root');
+  // код нижче перевстановлює значення css :root для кнопок-стрілок в слайдері
   document.documentElement.style.setProperty('--slider-arrow-hover', sliderArrowsColorHover);
 
   // нижче додаємо колір при наведенні на кнопку - тег style в html перед кнопкою з !important що б перебити інші стилі
