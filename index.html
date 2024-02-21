@@ -77,7 +77,7 @@
             <p id="hero-text" class="hero__text"></p>
           </div>
           <button id="hero-button" class="hero__button" type="button"><span id="hero-button-text"
-              class="hero__button-text"></span></button>
+              class="button-text"></span></button>
           <ul id="hero-option-block" class="hero__option-block"></ul>
         </div>
         <div class="hero__image-box">
@@ -125,12 +125,11 @@
             </button>
           </div>
           <div class="nachhaltiger-section__block">
-            <div class="nachhaltiger-section__img-container"><img class="nachhaltiger-section__img"
-                src="img/image-2-2section.png" alt="cup image"></div>
-            <div class="nachhaltiger-section__img-container"><img class="nachhaltiger-section__img"
-                src="img/image-3-2section.png" alt="portret image"></div>
-            <div class="nachhaltiger-section__img-container"><img class="nachhaltiger-section__img"
-                src="img/image-4-2section.png" alt="cup image"></div>
+            <div class="nachhaltiger-section__img-container">
+              <img class="nachhaltiger-section__img" src="img/image-2-2section.png" alt="cup image">
+              <img class="nachhaltiger-section__img" src="img/image-3-2section.png" alt="portret image">
+              <img class="nachhaltiger-section__img" src="img/image-4-2section.png" alt="cup image">
+            </div>
           </div>
         </div>
         <img class="nachhaltiger-section__bg-img" src="img/ÜBER-UNS.png" alt="background image">
@@ -286,8 +285,8 @@
   </main>
 
   <footer class="footer">
+    <div class="footer__rec"></div>
     <div class="footer__inner">
-      <div class="footer__rec"></div>
       <div class="grid-container">
         <div class="grid grid--footer">
           <div class="grid__horizontal grid__horizontal--footer"></div>
@@ -336,7 +335,9 @@
             <p class="footer__text">Abonniere unseren Newsletter. Maximal eine Mail pro Monat, Ehrenwort!</p>
             <form class="footer__form feedback-form" action="">
               <input class="feedback-form__input" type="email" id="email-input">
-              <button class="feedback-form__button" type="submit">jtz bestellen</button>
+              <button class="feedback-form__button" type="submit">
+                <span id="hero-button-text" class="button-text">jtz bestellen</span>
+              </button>
               <label class="feedback-form__label" for="email-input">E-MAIL ADRESSE</label>
             </form>
           </div>

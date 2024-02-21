@@ -1,5 +1,4 @@
 
-
 const initSider = function initSider() {
   // дістаємо h2 з блоку зі свайпером (по ньому будемо вичисляти скільки відстань між вікном браузеру і контейнером) -
   // - що б задати гнучку відстань в параметрі свайперу slidesOffsetBefore)
@@ -8,13 +7,16 @@ const initSider = function initSider() {
   // у знайденого елементу дізнаємося цю відстань - точку координат лівого краю елементу - це і є початок контейнеру і це змінна що якраз відповідає за відступ зліва у слайдера (згідно документації)
   const slidesOffsetBefore = containerOffsetSize.getBoundingClientRect().left;
 
-  const windowWidth = window.innerWidth;
-  let spaceBetween;
-  if(windowWidth < 760) {
-    spaceBetween = 20;
-  } else {
-    spaceBetween = 40;
-  }
+
+  // нижче варіант зміни відстані між слайдами залежно від ширини екрану
+  // const windowWidth = window.innerWidth;
+  // let spaceBetween;
+  // if(windowWidth < 760) {
+  //   spaceBetween = 20;
+  // } else {
+  //   spaceBetween = 40;
+  // }
+
 
   // ф що повертає слайдер що зарання встановлений з бібліотеки (прибрали його зі змінної - що б зробити ретьорн)
   return new Swiper('.swiper', {
@@ -36,8 +38,14 @@ const initSider = function initSider() {
     // робить так що б слайди йшли один за одним на одній сторінці одразу, а не кожен з нової
     slidesPerView: 'auto',
  
-    // це як gap у слайдера - відстань між слайдами
-    spaceBetween,
+    // це як gap у слайдера - відстань між слайдами;
+    // breakpoints дозволяє встановити ключові точки (точки ширини браузеру) і які будуть зміни а них
+    spaceBetween: 20,
+    breakpoints: {
+      760: {
+        spaceBetween: 40,
+      },
+    },
  
     // відступ зліва до всього слайдеру
     slidesOffsetBefore
